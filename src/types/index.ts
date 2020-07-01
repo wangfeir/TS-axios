@@ -12,4 +12,5 @@ export interface AxiosRequestConfig {
   method?: Method // 请求方法 类型字面量 可选默认get
   data?: any // data 可选参数 可选 任意格式
   params?: any  // 回调函数 可选 任意格式
+  headers?:any
 }

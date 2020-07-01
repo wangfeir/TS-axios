@@ -8,3 +8,7 @@ export function isObject(val: any): val is Object {
   // null 也是object类型
   return val !== null && typeof(val) === 'object'
 }
+// 判定是否是普通的object类型
+export function isPlainObject(val:any):val is Object{
+  return toString.call(val)==="[object Object]"
+}

@@ -1,4 +1,4 @@
-import { isDate, isObject } from './util';
+import { isDate, isPlainObject } from './util';
 function encode(val: string): string {
   // encodeURIComponent() 函数可把字符串作为 URI 组件进行编码。
   // replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串
@@ -37,7 +37,7 @@ export function buildURL(url: string, params?: any): string {
       if (isDate(val)) {
         // toISOString 使用 ISO 标准返回 Date 对象的字符串格式:
         val = val.toISOString()
-      } else if (isObject(val)) {
+      } else if (isPlainObject(val)) {
         val = JSON.stringify(val)
       }
       parts.push(`${encode(key)}=${encode(val)}`)
