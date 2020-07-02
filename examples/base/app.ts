@@ -54,30 +54,52 @@ import axios from '../../src/index'
 //   }
 // })
 
+// axios({
+//   method:'post',
+//   url:'/base/post',
+//   data:{
+//     bar:'baz',
+//   }
+// })
+// const arr = new Int32Array([22,23])
+// axios({
+//   method:'post',
+//   url:'/base/buffer',
+//   data:arr
+// })
+
+// axios({
+//   method:'post',
+//   url:'/base/post',
+ 
+//   headers:{
+//     'content-type':'application/json',
+//     'Accept':'application/json,test/plain'
+//   },
+//   data:{
+//     a:'1',
+//     b:'2'
+//   },
+// })
 axios({
   method:'post',
   url:'/base/post',
   data:{
-    bar:'baz',
-  }
-})
-const arr = new Int32Array([22,23])
-axios({
-  method:'post',
-  url:'/base/buffer',
-  data:arr
+    a:'3',
+    b:'4'
+  },
+}).then((res)=>{
+  console.log(res) // 返回的data是个字符串
 })
 
 axios({
   method:'post',
   url:'/base/post',
- 
-  headers:{
-    'content-type':'application/json',
-    'Accept':'application/json,test/plain'
-  },
+  responseType:'json',
   data:{
     a:'1',
     b:'2'
   },
+}).then((res)=>{
+  console.log(res) // 返回的data是个对象
 })

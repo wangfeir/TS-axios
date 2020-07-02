@@ -13,4 +13,19 @@ export interface AxiosRequestConfig {
   data?: any // data 可选参数 可选 任意格式
   params?: any  // 回调函数 可选 任意格式
   headers?:any
+  responseType?:XMLHttpRequestResponseType
+
+}
+// 返回数据的类型接口 
+export interface AxiosResponse{
+  data:any
+  status:number
+  statusText:string
+  headers:any
+  config:AxiosRequestConfig
+  request:any
+}
+// 回调函数 Promise的接口类型
+export interface AxiosPromise extends Promise <AxiosResponse>{
+
 }
