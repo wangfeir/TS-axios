@@ -51,6 +51,12 @@ router.post('/base/buffer',function(req,res){
 		res.json(buf.toJSON())
 	})
 })
+
+router.post('/base/timeout', function(req, res) {
+	setTimeout(()=>{
+		res.json(req.body);
+	},3000)
+});
 app.use(router);
 const port = process.env.PORT || 8080;
 module.exports = app.listen(port, () => {

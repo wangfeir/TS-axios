@@ -13,7 +13,8 @@ export interface AxiosRequestConfig {
   data?: any // data 可选参数 可选 任意格式
   params?: any  // 回调函数 可选 任意格式
   headers?:any
-  responseType?:XMLHttpRequestResponseType
+  responseType?:XMLHttpRequestResponseType,
+  timeout?:number
 
 }
 // 返回数据的类型接口 
