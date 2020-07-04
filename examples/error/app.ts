@@ -1,4 +1,4 @@
-import axios from '../../src/index'
+import axios,{AxiosError} from '../../src/index'
 // 接口响应时间是3000 设置超时时间为2000 会报错 Error: Timeout of 2000 ms exceeded!
 axios({
   method:'post',
@@ -10,8 +10,12 @@ axios({
   timeout:2000
 }).then((res)=>{
   console.log(res) // 返回的data是个字符串
-}).catch((error)=>{
-  console.log(error)
+}).catch((e:AxiosError)=>{
+  console.log(e.code)
+  console.log(e.config)
+  console.log(e.message)
+  console.log(e.response)
+  console.log(e.request)
 })
 
 // get111的路由不存在  错误代码404 Request failed with status code 404
@@ -35,7 +39,11 @@ setTimeout(function(){
     },
   }).then((res)=>{
     console.log(res) // 返回的data是个字符串
-  }).catch((error)=>{
-    console.log(error)
+  }).catch((e:AxiosError)=>{
+    console.log(e.code)
+    console.log(e.config)
+    console.log(e.message)
+    console.log(e.response)
+    console.log(e.request)
   })
 },5000)
