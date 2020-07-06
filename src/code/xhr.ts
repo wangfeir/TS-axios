@@ -1,7 +1,7 @@
 // 创建XMLHttpRequest方法
-import { AxiosRequestConfig,AxiosPromise, AxiosResponse } from './types'
-import { parseHeaders } from './helpers/header'
-import { createError } from './helpers/error'
+import { AxiosRequestConfig,AxiosPromise, AxiosResponse } from '../types'
+import { parseHeaders } from '../helpers/header'
+import { createError } from '../helpers/error'
 function xhr(config: AxiosRequestConfig):AxiosPromise {
   return new Promise((resolve,reject)=>{
     const { method = 'get', data = null, url,headers,responseType,timeout } = config
@@ -13,8 +13,8 @@ function xhr(config: AxiosRequestConfig):AxiosPromise {
     if(timeout){
       request.timeout = timeout;
     }
-
-    request.open(method.toUpperCase(), url, true);
+    // url!是说这个属性在定义接口的时候是选填但在这是必选属性
+    request.open(method.toUpperCase(), url!, true);
     // 如果请求发生错误，的错误提示
     request.onerror = function handleError(){
       // reject(new Error('Network Error'))

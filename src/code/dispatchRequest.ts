@@ -1,15 +1,15 @@
 // axios的入口文件
-import { AxiosRequestConfig,AxiosPromise, AxiosResponse } from "./types";
+import { AxiosRequestConfig,AxiosPromise, AxiosResponse } from "../types";
 // XMLHttpRequest方法
-import xhr from './code/xhr'
+import xhr from './xhr'
 // 将参数带入url
-import { buildURL } from './helpers/url'
+import { buildURL } from '../helpers/url'
 
-import { transformData,transformResponse } from './helpers/data'
+import { transformData,transformResponse } from '../helpers/data'
 
-import { processHeaders } from './helpers/header'
+import { processHeaders } from '../helpers/header'
 
-function axios(config: AxiosRequestConfig) :AxiosPromise{
+export default  function dispatchRequest(config: AxiosRequestConfig) :AxiosPromise{
   // 对Config进行处理
   processConfig(config)
   // 将返回的res中的data进行格式转换
@@ -43,4 +43,3 @@ function transformResponseData(res:AxiosResponse):AxiosResponse{
   res.data =transformResponse(res.data);
   return res
 }
-export default axios
