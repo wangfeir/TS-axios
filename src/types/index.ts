@@ -18,8 +18,8 @@ export interface AxiosRequestConfig {
 
 }
 // 返回数据的类型接口 
-export interface AxiosResponse{
-  data:any
+export interface AxiosResponse<T=any>{
+  data:T
   status:number
   statusText:string
   headers:any
@@ -27,7 +27,7 @@ export interface AxiosResponse{
   request:any
 }
 // 回调函数 Promise的接口类型
-export interface AxiosPromise extends Promise <AxiosResponse>{
+export interface AxiosPromise<T=any> extends Promise <AxiosResponse<T>>{
 
 }
 
@@ -40,21 +40,22 @@ export interface AxiosError extends Error{
 }
 
 // axios 类的接口 
-export interface Axios{
-  request(config:AxiosRequestConfig):AxiosPromise
+export interface Axios {
+  request<T=any>(config:AxiosRequestConfig):AxiosPromise<T>
 
-  get(url:string,config?:AxiosRequestConfig):AxiosPromise
-  delete(url:string,config?:AxiosRequestConfig):AxiosPromise
-  head(url:string,config?:AxiosRequestConfig):AxiosPromise
-  options(url:string,config?:AxiosRequestConfig):AxiosPromise
-  post(url:string,data?:any,config?:AxiosRequestConfig):AxiosPromise
-  put(url:string,data?:any,config?:AxiosRequestConfig):AxiosPromise
-  patch(url:string,data?:any,config?:AxiosRequestConfig):AxiosPromise
+  get<T=any>(url:string,config?:AxiosRequestConfig):AxiosPromise<T>
+  delete<T=any>(url:string,config?:AxiosRequestConfig):AxiosPromise<T>
+  head<T=any>(url:string,config?:AxiosRequestConfig):AxiosPromise<T>
+  options<T=any>(url:string,config?:AxiosRequestConfig):AxiosPromise<T>
+  post<T=any>(url:string,data?:any,config?:AxiosRequestConfig):AxiosPromise<T>
+  put<T=any>(url:string,data?:any,config?:AxiosRequestConfig):AxiosPromise<T>
+  patch<T=any>(url:string,data?:any,config?:AxiosRequestConfig):AxiosPromise<T>
 
 }
 
 // 混合接口
 export interface AxiosInstance extends Axios{
  // 定义一个函数类型的接口 接收1个参数 返回值是AxiosPromise类型
-  (config:AxiosRequestConfig):AxiosPromise
+ <T=any>(config:AxiosRequestConfig):AxiosPromise<T>
+ <T=any>(url:any,config?:any):AxiosPromise<T>
 }
