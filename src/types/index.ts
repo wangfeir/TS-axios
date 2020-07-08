@@ -59,3 +59,17 @@ export interface AxiosInstance extends Axios{
  <T=any>(config:AxiosRequestConfig):AxiosPromise<T>
  <T=any>(url:any,config?:any):AxiosPromise<T>
 }
+
+// 拦截器管理接口
+export interface AxiosInterceptorManager<T>{
+  use(resolved:ResolvedFn<T>,rejected:RejectedFn<T>):number
+
+  eject(id:number):void
+}
+
+export interface ResolvedFn<T>{
+  (val:T):T|Promise<T>
+}
+export interface RejectedFn<T>{
+  (error:any):any
+}
